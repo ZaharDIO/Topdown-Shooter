@@ -7,7 +7,7 @@ velv	     = 0
 controla_player = function()
 {
 	//Declarando variáveis
-	var _cima, _baixo, _esquerda, _direita
+	var _cima, _baixo, _esquerda, _direita, _image
 	
 	//Pegando os inputs do player
 	_cima     = keyboard_check(ord("W"))
@@ -23,8 +23,21 @@ controla_player = function()
 	y += velv * player_speed
 	x += velh * player_speed
 	
-	//Fazendo o player olhar para onde o mouse está
-	image_angle = point_direction(x, y, mouse_x, mouse_y)
+	//Se a velocidade vertical ou horizontal for diferente de 0
+	if velh != 0 or velv != 0 {
+		//Variável da velocidade da imagem fica verdadeira
+		_image = 1
+		//Velocidade da imagem é igual a _image
+		image_speed = _image
+	} else {
+		//Velocidade da imagem fica parada
+		_image = 0
+		//Velocidade da imagem é igual _image
+		image_speed = _image
+		//Sprite volta ao indice 0 (primeira imagem do sprite)
+		image_index = 1
+	}
+
 }
 
 atirando = function()
