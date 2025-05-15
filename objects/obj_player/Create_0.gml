@@ -1,7 +1,11 @@
 //Variáveis
-player_speed = 5
-velh		 = 0
-velv	     = 0
+player_speed = 5				 //Velocidade do player
+velh		 = 0				
+velv	     = 0				
+veltiro		 = 10				 //Velocidade do tiro
+								
+estiro		 = 0				 //Controle se posso atirar ou não
+cdtiro		 = room_speed * 0.2  //Cooldown do tiro
 
 //Função que controla o player
 controla_player = function()
@@ -40,14 +44,36 @@ controla_player = function()
 
 }
 
+//Função que controla o metódo de atirar
 atirando = function()
 {
 	//Declarando variáveis
-	var _dir
+	var _dir,_tiro
 	
 	//Definindo a direção do player em relação ao mouse
 	_dir = point_direction(x, y, mouse_x, mouse_y)
 	
 	//Angulo da sprite do player é igual a direção
 	image_angle = _dir
+	
+	//Variável para armazenar se o player apertou o botão do mouse
+	var _atirando = mouse_check_button(mb_left)
+	
+	//Atirando se o botão do mouse esquerdo for pressionado e se a espera do tiro estiver em 0
+	if _atirando and estiro <= 0
+	{
+		//Definindo a criação do objeto na variável tiro
+		_tiro = instance_create_layer(x,y,"Tiros",obj_tiro)
+		//Setando a direção
+		_tiro.direction	  = _dir
+		//Setando o angulo da sprite
+		_tiro.image_angle = _dir
+		//Setando a velocidade
+		_tiro.speed		  = veltiro
+		//Após atirar reseta o cooldown do tiro
+		estiro = cdtiro
+	} else {
+		//Decremente o tiro
+		estiro--
+	}
 }

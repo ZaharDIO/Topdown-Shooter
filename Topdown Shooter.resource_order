@@ -17,5 +17,10 @@
     {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
   ],
-  "ResourceOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"obj_tiro","order":1,"path":"objects/obj_tiro/obj_tiro.yy",},
+    {"name":"Room1_1","order":2,"path":"rooms/Room1_1/Room1_1.yy",},
+    {"name":"spr_fx_tiro","order":4,"path":"sprites/spr_fx_tiro/spr_fx_tiro.yy",},
+    {"name":"spr_tiro","order":3,"path":"sprites/spr_tiro/spr_tiro.yy",},
+  ],
 }
