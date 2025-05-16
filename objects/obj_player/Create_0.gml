@@ -59,21 +59,36 @@ atirando = function()
 	//Variável para armazenar se o player apertou o botão do mouse
 	var _atirando = mouse_check_button(mb_left)
 	
-	//Atirando se o botão do mouse esquerdo for pressionado e se a espera do tiro estiver em 0
-	if _atirando and estiro <= 0
+	//Atirando se a espera do tiro estiver em 0
+	if (estiro <= 0)
 	{
-		//Definindo a criação do objeto na variável tiro
-		_tiro = instance_create_layer(x,y,"Tiros",obj_tiro)
-		//Setando a direção
-		_tiro.direction	  = _dir
-		//Setando o angulo da sprite
-		_tiro.image_angle = _dir
-		//Setando a velocidade
-		_tiro.speed		  = veltiro
-		//Após atirar reseta o cooldown do tiro
-		estiro = cdtiro
-	} else {
-		//Decremente o tiro
+		//Se o botão do mouse esquerdo for pressionado
+		if (_atirando)
+		{
+			//Definindo a sprite como player atirando
+			sprite_index = spr_player_atirando
+			
+			//Definindo a criação do objeto na variável tiro
+			_tiro = instance_create_layer(x,y,"Tiros",obj_tiro)
+			//Setando a direção
+			_tiro.direction	  = _dir
+			//Setando o angulo da sprite
+			_tiro.image_angle = _dir
+			//Setando a velocidade
+			_tiro.speed		  = veltiro
+			
+			//Após atirar reseta o cooldown do tiro
+			estiro = cdtiro
+		} 
+		else //Ao soltar o botão de atirar
+		{
+			//Resetando a sprite do player
+			sprite_index = spr_player
+		}
+	} 
+	else //Se o timer for maior que 0
+	{
+		//Decremente o timer do tiro
 		estiro--
 	}
 }
