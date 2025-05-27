@@ -10,8 +10,8 @@
   "name":"obj_tiro",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Tiros",
+    "path":"folders/Objects/Tiros.yy",
   },
   "parentObjectId":null,
   "persistent":false,

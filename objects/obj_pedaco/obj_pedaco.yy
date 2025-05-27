@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_inimigo_peq",
+  "%Name":"obj_pedaco",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_inimigo_peq",
+  "name":"obj_pedaco",
   "overriddenProperties":[],
   "parent":{
     "name":"Inimigos",
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_inimigo_peq",
-    "path":"sprites/spr_inimigo_peq/spr_inimigo_peq.yy",
+    "name":"spr_pedaco",
+    "path":"sprites/spr_pedaco/spr_pedaco.yy",
   },
   "spriteMaskId":null,
   "visible":true,

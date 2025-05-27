@@ -1,7 +1,11 @@
 //Definindo um valor para escala
 escala = 5
+
 //Definindo um timer
 timer  = room_speed * 6
+
+//Dano do tiro
+dano   = 1
 
 
 //Escala X e Y é o valor da escala original vezes a minha escala
@@ -22,14 +26,14 @@ image_yscale = image_xscale
 	yscale = lerp(yscale, 1, 0.1)
 */
 
-efeito_lerp = function()
+efeito_lerp   = function()
 {
 	image_xscale = lerp(image_xscale, 1, 0.1)
 	image_yscale = image_xscale
 }
 
 //Efeito de brilho no tiro
-efeito_tiro = function()
+efeito_tiro   = function()
 {
 	//Se desenhando
 	draw_self()
@@ -42,6 +46,12 @@ efeito_tiro = function()
 	gpu_set_blendmode(bm_normal)
 }
 
+efeito_exp    = function()
+{
+	//Criando o efeito do tiro
+	instance_create_layer(x, y, "Tiros", obj_exp_tiro)
+}
+
 //Se autodestruindo
 self_destruct = function()
 {
@@ -52,5 +62,26 @@ self_destruct = function()
 		{
 			//Destrua as instancias do objeto tiro
 			instance_destroy()
+	}
+}
+
+//Colidindo com o inimigo
+colide_inimigo = function()
+{
+	//Checando se houve colisão, place meeting retorna valores booleanos
+	//Instance place, checa se houve colisão e checa a ID de quem colidiu, permitindo usar essa ID
+	//Em um instance_destroy por exemplo
+	var _inimigo = instance_place(x,y,obj_inimigo_peq)
+	
+	//Se colisão for verdadeira
+	if _inimigo
+	{
+		efeito_exp()
+		
+		//Inimigo leva dano
+		_inimigo.levar_dano(dano)
+		
+		//Tiro se destroi
+		instance_destroy()
 	}
 }

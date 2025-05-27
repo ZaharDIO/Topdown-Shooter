@@ -1,16 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_inimigo_peq",
+  "%Name":"obj_exp_tiro",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_inimigo_peq",
+  "name":"obj_exp_tiro",
   "overriddenProperties":[],
   "parent":{
-    "name":"Inimigos",
-    "path":"folders/Objects/Inimigos.yy",
+    "name":"Tiros",
+    "path":"folders/Objects/Tiros.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_inimigo_peq",
-    "path":"sprites/spr_inimigo_peq/spr_inimigo_peq.yy",
+    "name":"spr_exp_tiro",
+    "path":"sprites/spr_exp_tiro/spr_exp_tiro.yy",
   },
   "spriteMaskId":null,
   "visible":true,

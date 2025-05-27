@@ -1,6 +1,12 @@
+//Variáveis que definem o cooldown do tiro
 cdtimer = room_speed * random_range(1,3)
-timer = cdtimer
+timer   = cdtimer
 
+//Variável que mede a distância do player
+distanciamin = 200
+
+//Vida do inimigo
+vida = 5
 //Faz os inimigos se moverem
 define_movimento = function()
 {
@@ -53,6 +59,70 @@ Você pode criar uma variável para o timer, diminuir o valor dela a cada
 frame e sempre que esta variável chegar no zero, você muda a direção e 
 velocidade do inimigo, depois basta resetar o timer e repetir o processo.
 */
+}
+
+//Função que faz o inimigo seguir o player ao se aproximar
+segue_player	 = function()
+{
+	//Se alguma instância do player existe
+	if instance_exists(obj_player)
+	{
+		//Meça a distância entre o objeto e o player
+		var _distancia = point_distance(x,y,obj_player.x, obj_player.y)
+		//Se a distância minima for menor que a distancia
+		if _distancia < distanciamin
+		{
+			//Direção do inimigo vai ser em direção ao player
+			var _dir  = point_direction(x,y,obj_player.x,obj_player.y)
+			direction = _dir
+		}
+	}
+}
+
+
+//Função que controla a vida do inimigo
+///@method levar_dano(valor_dano)
+levar_dano		 = function(_dano)
+{
+	//Garantindo que se a pessoa não passar valor para o _dano ele vai valer 1
+	if(_dano == undefined)
+	{
+		_dano = 1
+	}
+	
+	//Decremente 1 de vida
+	vida -= _dano
+
+	//Explode, deixa um rastro e se destroi se a vida for menor que 0
+	if vida <=0 
+	{
+		explodindo()
+		instance_destroy()
+	}
+}
+
+explodindo		 = function()
+{
+	//Criando rastro
+	var _rastro = instance_create_layer(x,y,"Inimigos",obj_vestigio)
+	_rastro.image_angle = irandom(359)
+	
+	//Numero aleatório de pedaços
+	var _qtdpedacos = irandom_range(5,10)
+	
+	//Repita o código de acordo com a quantidade de pedaços
+	repeat(_qtdpedacos){
+		
+		//Crie o obj pedaço na layer inimigos
+		var _pedaco = instance_create_layer(x,y,"Inimigos",obj_pedaco)
+		
+		//Velocidade e direção dos pedaços
+		var _velocidade     = irandom_range(5,10)
+		var _direcao        = irandom(359)
+		_pedaco.speed	    = _velocidade
+		_pedaco.direction   = _direcao
+		_pedaco.image_angle	= _pedaco.direction //Angulo da imagem será na mesma direção q ele voou
+	}
 }
 define_movimento()
 
